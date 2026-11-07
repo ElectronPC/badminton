@@ -30,7 +30,32 @@ export function App() {
   const [scoringMatch, setScoringMatch] = useState<Match | null>(null);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('badminton_theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    }
+    return 'light';
+  });
   const syncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Sync theme to document.documentElement
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+      localStorage.setItem('badminton_theme', theme);
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   // Initialize or fetch from cloud
   useEffect(() => {
@@ -207,8 +232,8 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-800 flex flex-col font-sans">
-      {/* Top Navbar */}
+    <div className="min-h-screen bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
+      {/* Top Navbar with Theme Toggle */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -216,13 +241,15 @@ export function App() {
         onShareClick={() => setShareModalOpen(true)}
         onRefreshClick={session?.cloudObjectId ? handleManualRefresh : undefined}
         isRefreshing={isRefreshing}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 pt-5">
         {!session ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400">
-            <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+            <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mb-3"></div>
             <p className="text-sm">กำลังโหลดข้อมูลก๊วนแบด...</p>
           </div>
         ) : (
