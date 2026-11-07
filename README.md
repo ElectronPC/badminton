@@ -1,32 +1,68 @@
-# React + TypeScript + Vite
+# 🏸 Badminton Manager - ระบบจัดตารางก๊วน & นับแต้มสด
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+เว็บแอปพลิเคชันสำหรับบริหารจัดการก๊วนแบดมินตัน ออกแบบมาสำหรับเปิดบนมือถือข้างคอร์ด (Mobile-First) 
+ช่วยจัดตารางแข่งขันแบบพบกันหมด (Fair Round-Robin) และมีระบบนับแต้มสดพร้อมอัปเดตตารางคะแนนแบบเรียลไทม์
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 ฟีเจอร์หลัก (Features)
 
-## React Compiler
+1. **👥 จัดก๊วน & เพิ่มสมาชิก (Setup)**:
+   - เพิ่ม/ลบรายชื่อคู่ผู้เล่นที่มาเล่นในแต่ละวันได้อย่างอิสระ
+   - โหลด 6 คู่เริ่มต้นได้ทันที (ลิม-รอน, นัส-ดาว, ซิม-อัย, ฟารุต-แว, ลัน-อาบิ, อาท-มัง)
+   - ปรับแต้มจบเกมได้ (15, 21, หรือ 30 แต้ม)
+   - อัลกอริทึมจัดตารางอัตโนมัติ (Fair Round-Robin) ที่การันตีว่า **ไม่มีใครต้องแข่งติดกัน** และพักเท่าๆ กัน
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **🏸 นับแต้มสดข้างคอร์ด (Live Scorer)**:
+   - ปุ่มกด `+1` / `-1` แต้มขนาดใหญ่พิเศษ แตะง่ายแม้มือเปียกเหงื่อ
+   - รองรับการสลับแดน (Swap Sides) และบอกสถานะฝั่งเสิร์ฟ
+   - มีระบบเสียงและระบบสั่นตอบสนอง (Haptic & Sound Feedback)
+   - เมื่อมีทีมชนะ มีพลุ Confetti ฉลองชัยชนะ
+   - บันทึกผลการแข่งขันและคำนวณเข้าตารางคะแนนทันที
 
-## Expanding the Oxlint configuration
+3. **📊 ตารางคะแนนรวม (Live Standings)**:
+   - เรียงลำดับทีมผู้นำอัตโนมัติ (ชนะ, แพ้, แต้มได้, แต้มเสีย, +/-)
+   - มอบเหรียญ 🥇🥈🥉 ให้กับ 3 อันดับแรก
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+4. **🔗 แชร์ลิงก์ & QR Code (Live Sync)**:
+   - สร้าง QR Code และลิงก์สำหรับส่งเข้ากลุ่ม LINE / แชทเพื่อน
+   - เพื่อนทุกคนที่เปิดลิงก์จะเห็นตารางแข่งขันและคะแนนอัปเดตสดพร้อมกัน
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 🚀 วิธีเปิดใช้งานในเครื่อง (Local Development)
+
+```bash
+cd D:\Badminton
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+เปิดเบราว์เซอร์ไปที่: `http://localhost:5173`
+
+---
+
+## ☁️ วิธีเชื่อมต่อ GitHub และนำขึ้น Vercel
+
+### 1. นำขึ้น GitHub ของคุณ
+1. ไปที่ [GitHub.com](https://github.com) แล้วกด **New repository** ตั้งชื่อว่า `badminton` (หรือชื่อที่ต้องการ)
+2. รันคำสั่งใน Terminal:
+```bash
+cd D:\Badminton
+git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/badminton.git
+git push -u origin main
+```
+
+### 2. นำขึ้น Vercel (ฟรี 100%)
+**วิธีที่ 1: ผ่านหน้าเว็บ Vercel (ง่ายที่สุด)**
+1. เข้าไปที่ [Vercel.com](https://vercel.com) แล้วเข้าสู่ระบบ
+2. กดปุ่ม **"Add New..."** ➔ **"Project"**
+3. เลือก Repository `badminton` ที่เพิ่ง Push ขึ้นไป
+4. Vercel จะตรวจพบ Vite และ `vercel.json` อัตโนมัติ กดปุ่ม **"Deploy"** ได้ทันที!
+
+**วิธีที่ 2: ผ่าน Vercel CLI**
+```bash
+cd D:\Badminton
+npx vercel
+```
+ทำตามขั้นตอนบนหน้าจอเพื่อ Deploy ขึ้น Cloud ได้ทันทีครับ
