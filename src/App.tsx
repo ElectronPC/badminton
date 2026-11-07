@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { TournamentSession, Match, Team } from './types';
+import type { TournamentSession, Match, Team, ExpenseInfo } from './types';
 import { generateSchedule } from './utils/scheduler';
 import {
   loadLocalSession,
@@ -11,6 +11,7 @@ import { Navbar } from './components/Navbar';
 import { SetupView } from './components/SetupView';
 import { ScheduleView } from './components/ScheduleView';
 import { StandingsView } from './components/StandingsView';
+import { ExpensesView } from './components/ExpensesView';
 import { LiveScorer } from './components/LiveScorer';
 import { ShareModal } from './components/ShareModal';
 
@@ -25,7 +26,7 @@ const DEFAULT_INITIAL_TEAMS: Team[] = [
 
 export function App() {
   const [session, setSession] = useState<TournamentSession | null>(null);
-  const [activeTab, setActiveTab] = useState<'setup' | 'schedule' | 'standings'>('schedule');
+  const [activeTab, setActiveTab] = useState<'setup' | 'schedule' | 'standings' | 'expenses'>('schedule');
   const [scoringMatch, setScoringMatch] = useState<Match | null>(null);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -73,6 +74,13 @@ export function App() {
           teams: DEFAULT_INITIAL_TEAMS,
           matches: defaultMatches,
           activeMatchId: null,
+          expenses: {
+            courtFee: 600,
+            shuttlecockFee: 0,
+            promptPayNumber: '',
+            promptPayName: '',
+            paidPlayerIds: [],
+          },
           lastUpdated: Date.now(),
         };
         setSession(initial);
@@ -174,6 +182,19 @@ export function App() {
     [session, scoringMatch, handleSaveSession]
   );
 
+  // Update expenses
+  const handleSaveExpenses = useCallback(
+    (expenses: ExpenseInfo) => {
+      if (!session) return;
+      const updatedSession: TournamentSession = {
+        ...session,
+        expenses,
+      };
+      handleSaveSession(updatedSession);
+    },
+    [session, handleSaveSession]
+  );
+
   const handleManualRefresh = async () => {
     if (!session?.cloudObjectId) return;
     setIsRefreshing(true);
@@ -223,6 +244,13 @@ export function App() {
                 session={session}
                 onSaveSession={handleSaveSession}
                 onGoToSchedule={() => setActiveTab('schedule')}
+              />
+            )}
+
+            {activeTab === 'expenses' && (
+              <ExpensesView
+                session={session}
+                onSaveExpenses={handleSaveExpenses}
               />
             )}
           </>

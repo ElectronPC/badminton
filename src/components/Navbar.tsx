@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Share2, Check, RefreshCw, Trophy, Calendar, Users } from 'lucide-react';
+import { Share2, Check, RefreshCw, Trophy, Calendar, Users, Wallet } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: 'setup' | 'schedule' | 'standings';
-  setActiveTab: (tab: 'setup' | 'schedule' | 'standings') => void;
+  activeTab: 'setup' | 'schedule' | 'standings' | 'expenses';
+  setActiveTab: (tab: 'setup' | 'schedule' | 'standings' | 'expenses') => void;
   isCloudSynced: boolean;
   onShareClick: () => void;
   onRefreshClick?: () => void;
@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               )}
             </h1>
-            <p className="text-xs text-slate-400">จัดตารางแข่ง & นับแต้มสด</p>
+            <p className="text-xs text-slate-400">จัดตารางแข่ง &amp; นับแต้มสด</p>
           </div>
         </div>
 
@@ -86,41 +86,53 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Tabs */}
-      <div className="max-w-4xl mx-auto px-4 flex border-t border-slate-800/60">
+      <div className="max-w-4xl mx-auto px-2 sm:px-4 flex border-t border-slate-800/60 overflow-x-auto">
         <button
           onClick={() => setActiveTab('schedule')}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition ${
+          className={`flex-1 min-w-[75px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'schedule'
               ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5'
               : 'border-transparent text-slate-400 hover:text-slate-200'
           }`}
         >
-          <Calendar className="w-4 h-4" />
-          <span>ตารางแข่งขัน</span>
+          <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <span>ตารางแข่ง</span>
         </button>
 
         <button
           onClick={() => setActiveTab('standings')}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition ${
+          className={`flex-1 min-w-[75px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'standings'
               ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5'
               : 'border-transparent text-slate-400 hover:text-slate-200'
           }`}
         >
-          <Trophy className="w-4 h-4" />
+          <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>ตารางคะแนน</span>
         </button>
 
         <button
           onClick={() => setActiveTab('setup')}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition ${
+          className={`flex-1 min-w-[75px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'setup'
               ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5'
               : 'border-transparent text-slate-400 hover:text-slate-200'
           }`}
         >
-          <Users className="w-4 h-4" />
-          <span>สมาชิก / จัดก๊วน</span>
+          <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <span>สมาชิกก๊วน</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('expenses')}
+          className={`flex-1 min-w-[75px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
+            activeTab === 'expenses'
+              ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5'
+              : 'border-transparent text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Wallet className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <span>ค่าคอร์ท / หารเงิน</span>
         </button>
       </div>
     </header>
