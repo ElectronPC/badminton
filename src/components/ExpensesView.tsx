@@ -232,7 +232,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
       <div className="max-w-md mx-auto my-8 sm:my-14 space-y-6">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl text-center space-y-5 transition-colors">
           {/* Lock Icon */}
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-orange-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/30">
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#f7847d] via-[#f89875] to-[#f9af6f] flex items-center justify-center text-white shadow-lg shadow-[#f7847d]/30">
             <Lock className="w-8 h-8" />
           </div>
 
@@ -265,7 +265,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 placeholder="ระบุชื่อผู้ใช้"
                 value={usernameInput}
                 onChange={(e) => setUsernameInput(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
                 required
               />
             </div>
@@ -279,14 +279,14 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 placeholder="ระบุรหัสผ่าน"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
                 required
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold text-sm shadow-lg shadow-orange-500/25 transition active:scale-[0.99] mt-2"
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white font-bold text-sm shadow-lg shadow-[#f7847d]/25 transition active:scale-[0.99] mt-2"
             >
               เข้าสู่ระบบ
             </button>
@@ -297,7 +297,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
             <button
               type="button"
               onClick={onGoToSchedule}
-              className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 flex items-center justify-center gap-1.5 mx-auto transition"
+              className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-[#dc5349] dark:hover:text-[#fba69f] flex items-center justify-center gap-1.5 mx-auto transition"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>กลับไปดูตารางแข่งขัน</span>
@@ -314,9 +314,9 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
   return (
     <div className="space-y-5 pb-12">
       {/* Admin Status Bar */}
-      <div className="flex items-center justify-between px-3 py-2 bg-orange-50 dark:bg-orange-950/30 border border-orange-200/80 dark:border-orange-800/80 rounded-xl text-xs">
-        <div className="flex items-center gap-1.5 font-semibold text-orange-800 dark:text-orange-300">
-          <ShieldCheck className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+      <div className="flex items-center justify-between px-3 py-2 bg-[#f7847d]/10 dark:bg-[#f7847d]/20 border border-[#f7847d]/30 dark:border-[#f7847d]/40 rounded-xl text-xs">
+        <div className="flex items-center gap-1.5 font-semibold text-[#dc5349] dark:text-[#fba69f]">
+          <ShieldCheck className="w-4 h-4 text-[#f7847d]" />
           <span>เข้าสู่ระบบในชื่อ: <b>Electron</b> (ผู้ดูแลระบบ)</span>
         </div>
 
@@ -329,24 +329,24 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
         </button>
       </div>
 
-      {/* Top Banner - Sunset Orange / Red Theme */}
-      <div className="bg-gradient-to-r from-orange-500 via-amber-600 to-rose-600 text-white rounded-2xl p-5 shadow-lg">
+      {/* Top Banner - Coral Peach Sunset Theme */}
+      <div className="bg-gradient-to-br from-[#f7847d] via-[#f89875] to-[#f9af6f] text-white rounded-2xl p-5 shadow-lg shadow-[#f7847d]/20">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
-              <Wallet className="w-5 h-5 text-amber-200" />
+              <Wallet className="w-5 h-5 text-rose-100" />
               <span>สรุปค่าใช้จ่าย &amp; หารค่าคอร์ท</span>
             </h2>
-            <p className="text-xs text-amber-100 mt-1">
+            <p className="text-xs text-rose-50 mt-1">
               คำนวณและหารเฉลี่ยเท่าๆ กันตามรายชื่อสมาชิกที่มาเล่นวันนี้ ({numPlayers} คน)
             </p>
           </div>
 
           <button
             onClick={handleCopyLineSummary}
-            className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-orange-800 hover:bg-orange-50 font-bold text-xs sm:text-sm shadow-md transition active:scale-95"
+            className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-[#dc5349] hover:bg-rose-50/80 font-bold text-xs sm:text-sm shadow-md transition active:scale-95"
           >
-            {copiedSummary ? <Check className="w-4 h-4 text-orange-600" /> : <Share2 className="w-4 h-4" />}
+            {copiedSummary ? <Check className="w-4 h-4 text-[#f7847d]" /> : <Share2 className="w-4 h-4" />}
             <span>{copiedSummary ? 'คัดลอกสรุปสำเร็จ!' : 'คัดลอกสรุปส่ง LINE'}</span>
           </button>
         </div>
@@ -354,7 +354,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
         {/* Calculation Cards */}
         <div className="grid grid-cols-3 gap-2.5 sm:gap-4 mt-5">
           <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-3 sm:p-4 text-center">
-            <div className="text-xs text-orange-100 flex items-center justify-center gap-1">
+            <div className="text-xs text-rose-50 flex items-center justify-center gap-1">
               <DollarSign className="w-3.5 h-3.5" />
               <span>ค่าใช้จ่ายรวม</span>
             </div>
@@ -364,7 +364,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
           </div>
 
           <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-3 sm:p-4 text-center">
-            <div className="text-xs text-orange-100 flex items-center justify-center gap-1">
+            <div className="text-xs text-rose-50 flex items-center justify-center gap-1">
               <Users className="w-3.5 h-3.5" />
               <span>จำนวนคนหาร</span>
             </div>
@@ -373,12 +373,12 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
             </div>
           </div>
 
-          <div className="bg-white text-orange-900 rounded-xl p-3 sm:p-4 text-center shadow-md">
-            <div className="text-xs text-orange-700 font-bold flex items-center justify-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+          <div className="bg-white text-[#dc5349] rounded-xl p-3 sm:p-4 text-center shadow-md">
+            <div className="text-xs text-[#dc5349] font-bold flex items-center justify-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-[#f9af6f]" />
               <span>ตกคนละ</span>
             </div>
-            <div className="text-xl sm:text-3xl font-black mt-0.5 text-orange-600 font-mono">
+            <div className="text-xl sm:text-3xl font-black mt-0.5 text-[#dc5349] font-mono">
               {perPerson.toLocaleString()} <span className="text-xs font-semibold text-slate-600">บาท</span>
             </div>
           </div>
@@ -388,14 +388,14 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
       {/* PromptPay Info Box */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm transition-colors">
         <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-          <CreditCard className="w-4 h-4 text-orange-500" />
+          <CreditCard className="w-4 h-4 text-[#f7847d]" />
           <span>ช่องทางชำระเงิน (พร้อมเพย์)</span>
         </h3>
 
         {promptPayNumber.trim() ? (
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-orange-50/50 dark:bg-slate-950/60 border border-orange-200/70 dark:border-slate-800 rounded-xl p-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#f7847d]/10 dark:bg-slate-950/60 border border-[#f7847d]/30 dark:border-slate-800 rounded-xl p-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/60 border border-orange-300 dark:border-orange-800 flex items-center justify-center text-2xl shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[#f7847d]/15 dark:bg-[#f7847d]/20 border border-[#f7847d]/40 dark:border-[#f7847d]/50 flex items-center justify-center text-2xl shrink-0">
                 📱
               </div>
               <div>
@@ -416,14 +416,14 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 onClick={handleCopyPromptPay}
                 className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 text-xs font-bold border border-slate-300 dark:border-slate-700 shadow-sm transition active:scale-95"
               >
-                {copiedPromptPay ? <Check className="w-3.5 h-3.5 text-orange-600" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedPromptPay ? <Check className="w-3.5 h-3.5 text-[#f7847d]" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedPromptPay ? 'คัดลอกแล้ว!' : 'คัดลอกเบอร์'}</span>
               </button>
 
               {promptPayQrUrl && (
                 <button
                   onClick={() => setShowQRModal(true)}
-                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white text-xs font-bold shadow-md shadow-orange-500/20 transition active:scale-95"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white text-xs font-bold shadow-md shadow-[#f7847d]/20 transition active:scale-95"
                 >
                   <QrCode className="w-3.5 h-3.5" />
                   <span>เปิด QR Code ({perPerson} บ.)</span>
@@ -444,7 +444,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
         <div>
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-orange-500" />
+              <CheckCircle2 className="w-4 h-4 text-[#f7847d]" />
               <span>เช็คชื่อการจ่ายเงิน ({paidCount} / {numPlayers} คน)</span>
             </h3>
 
@@ -452,7 +452,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               <button
                 type="button"
                 onClick={handleMarkAllPaid}
-                className="text-orange-600 dark:text-orange-400 hover:underline"
+                className="text-[#dc5349] dark:text-[#fba69f] hover:underline"
               >
                 จ่ายครบทุกคน
               </button>
@@ -470,13 +470,13 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
           {/* Progress Bar */}
           <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-orange-500 to-rose-500 h-3 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] h-3 rounded-full transition-all duration-300"
               style={{ width: `${Math.round((paidCount / numPlayers) * 100)}%` }}
             />
           </div>
 
           <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 mt-2 font-medium">
-            <span>เก็บได้แล้ว: <b className="text-orange-600 dark:text-orange-400 font-bold">{collectedAmount.toLocaleString()} บาท</b></span>
+            <span>เก็บได้แล้ว: <b className="text-[#dc5349] dark:text-[#fba69f] font-bold">{collectedAmount.toLocaleString()} บาท</b></span>
             <span>ยังขาดอีก: <b className="text-rose-600 dark:text-rose-400 font-bold">{Math.max(0, remainingAmount).toLocaleString()} บาท</b></span>
           </div>
         </div>
@@ -491,7 +491,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 onClick={() => handleTogglePaid(player.id)}
                 className={`flex items-center justify-between p-3.5 rounded-xl border-2 cursor-pointer select-none transition ${
                   isPaid
-                    ? 'bg-orange-50/70 border-orange-500 text-orange-950 dark:bg-orange-950/25 dark:border-orange-500/60 dark:text-orange-200 shadow-xs'
+                    ? 'bg-[#f7847d]/10 border-[#f7847d] text-slate-900 dark:bg-[#f7847d]/15 dark:border-[#f7847d]/70 dark:text-white shadow-xs'
                     : 'bg-white border-slate-200 dark:bg-slate-950/50 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200'
                 }`}
               >
@@ -500,7 +500,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                   <div
                     className={`w-6 h-6 rounded-lg flex items-center justify-center border-2 transition ${
                       isPaid
-                        ? 'bg-gradient-to-tr from-orange-500 to-rose-500 border-orange-500 text-white'
+                        ? 'bg-gradient-to-tr from-[#f7847d] to-[#f9af6f] border-[#f7847d] text-white'
                         : 'border-slate-400 dark:border-slate-600 bg-white dark:bg-slate-900'
                     }`}
                   >
@@ -521,12 +521,12 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 </div>
 
                 <div className="text-right">
-                  <div className={`text-sm font-black font-mono ${isPaid ? 'text-orange-600 dark:text-orange-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                  <div className={`text-sm font-black font-mono ${isPaid ? 'text-[#dc5349] dark:text-[#fba69f]' : 'text-slate-800 dark:text-slate-200'}`}>
                     {perPerson} บาท
                   </div>
                   <div className="text-[11px] font-semibold flex items-center justify-end gap-1 mt-0.5">
                     {isPaid ? (
-                      <span className="text-orange-600 dark:text-orange-400 flex items-center gap-0.5">
+                      <span className="text-[#dc5349] dark:text-[#fba69f] flex items-center gap-0.5">
                         <CheckCircle2 className="w-3.5 h-3.5" /> ชำระแล้ว
                       </span>
                     ) : (
@@ -545,7 +545,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
       {/* Edit Form - User enters court fee, extra fees, and promptpay directly */}
       <form onSubmit={handleSaveConfig} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm space-y-4 transition-colors">
         <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
-          <Settings className="w-4 h-4 text-orange-500" />
+          <Settings className="w-4 h-4 text-[#f7847d]" />
           <span>ตั้งค่ายอดเงิน &amp; บัญชีพร้อมเพย์</span>
         </h3>
 
@@ -563,7 +563,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 setCourtFee(val);
                 saveState(paidPlayerIds, val, shuttlecockFee);
               }}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -580,7 +580,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 setShuttlecockFee(val);
                 saveState(paidPlayerIds, courtFee, val);
               }}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -593,7 +593,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               placeholder="เช่น 0812345678"
               value={promptPayNumber}
               onChange={(e) => setPromptPayNumber(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -606,7 +606,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               placeholder="เช่น นัส"
               value={promptPayName}
               onChange={(e) => setPromptPayName(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#f7847d] focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
         </div>
@@ -614,7 +614,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
         <div className="flex justify-end pt-1">
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-orange-500/20 transition active:scale-95"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white font-bold text-xs sm:text-sm shadow-md shadow-[#f7847d]/20 transition active:scale-95"
           >
             บันทึกการตั้งค่า
           </button>
@@ -634,7 +634,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               />
             </div>
             <div>
-              <div className="text-2xl font-black text-orange-600 dark:text-orange-400 font-mono">
+              <div className="text-2xl font-black text-[#dc5349] dark:text-[#fba69f] font-mono">
                 {perPerson} บาท
               </div>
               <div className="text-xs text-slate-600 dark:text-slate-400 mt-1 font-mono font-medium">

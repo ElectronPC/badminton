@@ -249,7 +249,7 @@ export function App() {
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 pt-5">
         {!session ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400">
-            <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+            <div className="w-8 h-8 border-2 border-[#f7847d] border-t-transparent rounded-full animate-spin mb-3"></div>
             <p className="text-sm">กำลังโหลดข้อมูลก๊วนแบด...</p>
           </div>
         ) : (

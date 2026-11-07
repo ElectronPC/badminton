@@ -36,7 +36,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
         particleCount: 130,
         spread: 85,
         origin: { y: 0.6 },
-        colors: ['#f97316', '#ef4444', '#f59e0b', '#ec4899', '#ffffff'],
+        colors: ['#f7847d', '#f89875', '#f9af6f', '#fed2cf', '#ffffff'],
       });
     }
   }, [isMatchWon]);
@@ -110,7 +110,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
             <X className="w-5 h-5" />
           </button>
           <div>
-            <div className="text-xs font-bold text-orange-600 dark:text-orange-400">
+            <div className="text-xs font-bold text-[#dc5349] dark:text-[#fba69f]">
               แมตช์ที่ {match.matchNumber} จาก {session.matches.length}
             </div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
@@ -143,16 +143,16 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
       <div className="flex-1 grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-800 max-w-4xl mx-auto w-full p-2 sm:p-4 gap-2 sm:gap-4 items-stretch">
         {/* Left Team Box */}
         <div className={`flex flex-col justify-between p-3 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border-2 shadow-md relative transition-colors ${
-          isLeftOrange ? 'border-orange-500/70' : 'border-rose-500/70'
+          isLeftOrange ? 'border-[#f7847d]' : 'border-[#f9af6f]'
         }`}>
           {/* Server Indicator */}
           {server === leftRole && (
             <div className={`absolute top-3 left-3 border text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
               isLeftOrange
-                ? 'bg-orange-100 dark:bg-orange-950/70 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-700'
-                : 'bg-rose-100 dark:bg-rose-950/70 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-700'
+                ? 'bg-[#f7847d]/15 text-[#dc5349] dark:text-[#fba69f] border-[#f7847d]/40'
+                : 'bg-[#f9af6f]/15 text-[#db7a28] dark:text-[#fbc693] border-[#f9af6f]/40'
             }`}>
-              <span className={`w-2 h-2 rounded-full animate-ping ${isLeftOrange ? 'bg-orange-500' : 'bg-rose-500'}`}></span>
+              <span className={`w-2 h-2 rounded-full animate-ping ${isLeftOrange ? 'bg-[#f7847d]' : 'bg-[#f9af6f]'}`}></span>
               เสิร์ฟ
             </div>
           )}
@@ -160,7 +160,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           {/* Team Info */}
           <div className="text-center mt-6">
             <span className={`inline-block w-8 h-8 rounded-xl text-white font-black text-sm leading-8 mb-1 shadow-xs ${
-              isLeftOrange ? 'bg-orange-600' : 'bg-rose-600'
+              isLeftOrange ? 'bg-gradient-to-br from-[#f7847d] to-[#ee6c63]' : 'bg-gradient-to-br from-[#f89875] to-[#f9af6f]'
             }`}>
               {leftTeam.code}
             </span>
@@ -196,8 +196,8 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
               onClick={() => handlePoint(leftRole, 1)}
               className={`flex-1 h-12 sm:h-16 rounded-2xl text-white font-black text-xl sm:text-2xl flex items-center justify-center gap-2 shadow-lg transition active:scale-95 ${
                 isLeftOrange
-                  ? 'bg-orange-600 hover:bg-orange-700 shadow-orange-600/30'
-                  : 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/30'
+                  ? 'bg-gradient-to-r from-[#f7847d] to-[#ee6c63] hover:brightness-105 shadow-[#f7847d]/30'
+                  : 'bg-gradient-to-r from-[#f89875] to-[#f9af6f] hover:brightness-105 shadow-[#f9af6f]/30'
               }`}
             >
               <Plus className="w-7 h-7 stroke-[3]" />
@@ -208,16 +208,16 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
 
         {/* Right Team Box */}
         <div className={`flex flex-col justify-between p-3 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border-2 shadow-md relative transition-colors ${
-          !isLeftOrange ? 'border-orange-500/70' : 'border-rose-500/70'
+          !isLeftOrange ? 'border-[#f7847d]' : 'border-[#f9af6f]'
         }`}>
           {/* Server Indicator */}
           {server === rightRole && (
             <div className={`absolute top-3 left-3 border text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs ${
               !isLeftOrange
-                ? 'bg-orange-100 dark:bg-orange-950/70 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-700'
-                : 'bg-rose-100 dark:bg-rose-950/70 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-700'
+                ? 'bg-[#f7847d]/15 text-[#dc5349] dark:text-[#fba69f] border-[#f7847d]/40'
+                : 'bg-[#f9af6f]/15 text-[#db7a28] dark:text-[#fbc693] border-[#f9af6f]/40'
             }`}>
-              <span className={`w-2 h-2 rounded-full animate-ping ${!isLeftOrange ? 'bg-orange-500' : 'bg-rose-500'}`}></span>
+              <span className={`w-2 h-2 rounded-full animate-ping ${!isLeftOrange ? 'bg-[#f7847d]' : 'bg-[#f9af6f]'}`}></span>
               เสิร์ฟ
             </div>
           )}
@@ -225,7 +225,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           {/* Team Info */}
           <div className="text-center mt-6">
             <span className={`inline-block w-8 h-8 rounded-xl text-white font-black text-sm leading-8 mb-1 shadow-xs ${
-              !isLeftOrange ? 'bg-orange-600' : 'bg-rose-600'
+              !isLeftOrange ? 'bg-gradient-to-br from-[#f7847d] to-[#ee6c63]' : 'bg-gradient-to-br from-[#f89875] to-[#f9af6f]'
             }`}>
               {rightTeam.code}
             </span>
@@ -261,8 +261,8 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
               onClick={() => handlePoint(rightRole, 1)}
               className={`flex-1 h-12 sm:h-16 rounded-2xl text-white font-black text-xl sm:text-2xl flex items-center justify-center gap-2 shadow-lg transition active:scale-95 ${
                 !isLeftOrange
-                  ? 'bg-orange-600 hover:bg-orange-700 shadow-orange-600/30'
-                  : 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/30'
+                  ? 'bg-gradient-to-r from-[#f7847d] to-[#ee6c63] hover:brightness-105 shadow-[#f7847d]/30'
+                  : 'bg-gradient-to-r from-[#f89875] to-[#f9af6f] hover:brightness-105 shadow-[#f9af6f]/30'
               }`}
             >
               <Plus className="w-7 h-7 stroke-[3]" />
@@ -274,7 +274,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
 
       {/* Match Win Banner */}
       {isMatchWon && (
-        <div className="bg-gradient-to-r from-orange-500 to-rose-600 text-white font-black text-center py-2.5 px-4 animate-bounce flex items-center justify-center gap-2 text-base shadow-lg">
+        <div className="bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] text-white font-black text-center py-2.5 px-4 animate-bounce flex items-center justify-center gap-2 text-base shadow-lg">
           <Trophy className="w-5 h-5 fill-white" />
           <span>
             {currentLeader === 'A' ? teamA.name : teamB.name} ชนะเกมนี้! ({scoreA} - {scoreB})
@@ -293,7 +293,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
 
         <button
           onClick={handleFinishMatch}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-black text-sm sm:text-base shadow-lg shadow-orange-500/30 transition active:scale-[0.98]"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white font-black text-sm sm:text-base shadow-lg shadow-[#f7847d]/30 transition active:scale-[0.98]"
         >
           <CheckCircle2 className="w-5 h-5" />
           <span>บันทึกผลการแข่งขัน &amp; จบเกม</span>

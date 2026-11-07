@@ -55,8 +55,8 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
         </div>
 
         {finishedCount > 0 && standings.length > 0 && (
-          <div className="hidden sm:flex items-center gap-2 bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 px-3 py-1.5 rounded-xl text-orange-700 dark:text-orange-300 text-xs font-bold">
-            <Flame className="w-4 h-4 text-orange-500" />
+          <div className="hidden sm:flex items-center gap-2 bg-[#f7847d]/10 dark:bg-[#f7847d]/20 border border-[#f7847d]/30 dark:border-[#f7847d]/40 px-3 py-1.5 rounded-xl text-[#dc5349] dark:text-[#fba69f] text-xs font-bold">
+            <Flame className="w-4 h-4 text-[#f7847d]" />
             <span>ผู้นำ: {standings[0].team.name}</span>
           </div>
         )}
@@ -71,8 +71,8 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                 <th className="py-3 px-3 sm:px-4 text-center w-12">อันดับ</th>
                 <th className="py-3 px-3 sm:px-4">ทีม / สมาชิก</th>
                 <th className="py-3 px-2 sm:px-3 text-center">แข่ง</th>
-                <th className="py-3 px-2 sm:px-3 text-center text-orange-600 dark:text-orange-400">ชนะ</th>
-                <th className="py-3 px-2 sm:px-3 text-center text-rose-600 dark:text-rose-400">แพ้</th>
+                <th className="py-3 px-2 sm:px-3 text-center text-[#dc5349] dark:text-[#fba69f]">ชนะ</th>
+                <th className="py-3 px-2 sm:px-3 text-center text-slate-500 dark:text-slate-400">แพ้</th>
                 <th className="py-3 px-2 sm:px-3 text-center hidden sm:table-cell">ได้</th>
                 <th className="py-3 px-2 sm:px-3 text-center hidden sm:table-cell">เสีย</th>
                 <th className="py-3 px-3 sm:px-4 text-center font-black">+/-</th>
@@ -85,7 +85,7 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                   <tr
                     key={stat.team.id}
                     className={`hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition ${
-                      isLeader ? 'bg-orange-50/40 dark:bg-orange-950/20' : ''
+                      isLeader ? 'bg-[#f7847d]/10 dark:bg-[#f7847d]/15' : ''
                     }`}
                   >
                     {/* Rank */}
@@ -118,7 +118,7 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                     </td>
 
                     {/* Won */}
-                    <td className="py-3 px-2 sm:px-3 text-center font-mono font-bold text-orange-600 dark:text-orange-400">
+                    <td className="py-3 px-2 sm:px-3 text-center font-mono font-bold text-[#dc5349] dark:text-[#fba69f]">
                       {stat.won}
                     </td>
 
@@ -142,7 +142,7 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                       <span
                         className={
                           stat.pointDiff > 0
-                            ? 'text-orange-600 dark:text-orange-400'
+                            ? 'text-[#dc5349] dark:text-[#fba69f]'
                             : stat.pointDiff < 0
                             ? 'text-rose-600 dark:text-rose-400'
                             : 'text-slate-500 dark:text-slate-400'

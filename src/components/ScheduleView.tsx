@@ -46,8 +46,8 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-bold text-orange-700 dark:text-orange-300 bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 px-3 py-1.5 rounded-xl w-fit">
-            <Trophy className="w-4 h-4 text-orange-500" />
+          <div className="flex items-center gap-2 text-xs font-bold text-[#dc5349] dark:text-[#fba69f] bg-[#f7847d]/10 dark:bg-[#f7847d]/20 border border-[#f7847d]/30 dark:border-[#f7847d]/40 px-3 py-1.5 rounded-xl w-fit">
+            <Trophy className="w-4 h-4 text-[#f7847d]" />
             <span>จบแล้ว {finishedCount} / {totalMatches} แมตช์ ({progressPercent}%)</span>
           </div>
         </div>
@@ -55,7 +55,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
         {/* Progress Bar */}
         <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-200 dark:border-slate-700">
           <div
-            className="bg-gradient-to-r from-orange-500 to-rose-500 h-2.5 rounded-full transition-all duration-500"
+            className="bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] h-2.5 rounded-full transition-all duration-500"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -63,14 +63,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
 
       {/* Featured Current/Next Match Highlight */}
       {currentMatch && (
-        <div className="bg-gradient-to-r from-orange-50 via-amber-50/50 to-rose-50 dark:from-orange-950/40 dark:via-slate-900 dark:to-rose-950/40 border-2 border-orange-500/80 rounded-2xl p-4 sm:p-5 shadow-md relative overflow-hidden transition-colors">
+        <div className="bg-gradient-to-r from-[#f7847d]/10 via-[#f89875]/10 to-[#f9af6f]/10 dark:from-[#f7847d]/20 dark:via-slate-900 dark:to-[#f9af6f]/20 border-2 border-[#f7847d]/80 rounded-2xl p-4 sm:p-5 shadow-md relative overflow-hidden transition-colors">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <span className="flex h-2.5 w-2.5 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-600"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f7847d] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ee6c63]"></span>
               </span>
-              <span className="text-xs font-bold text-orange-800 dark:text-orange-300 uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#dc5349] dark:text-[#fba69f] uppercase tracking-wider">
                 {currentMatch.status === 'live' ? '🔥 กำลังแข่งขันอยู่' : '🏸 แมตช์ถัดไปที่ต้องลงเล่น'}
               </span>
             </div>
@@ -83,7 +83,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
           <div className="grid grid-cols-2 gap-3 items-center py-2">
             {/* Team A */}
             <div className="text-center sm:text-left bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
-              <span className="inline-block w-6 h-6 rounded-md bg-orange-600 text-white font-black text-xs leading-6 text-center mb-1">
+              <span className="inline-block w-6 h-6 rounded-md bg-gradient-to-br from-[#f7847d] to-[#ee6c63] text-white font-black text-xs leading-6 text-center mb-1 shadow-xs">
                 {getTeam(currentMatch.teamAId)?.code}
               </span>
               <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
@@ -96,7 +96,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
 
             {/* Team B */}
             <div className="text-center sm:text-right bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
-              <span className="inline-block w-6 h-6 rounded-md bg-rose-600 text-white font-black text-xs leading-6 text-center mb-1">
+              <span className="inline-block w-6 h-6 rounded-md bg-gradient-to-br from-[#f89875] to-[#f9af6f] text-white font-black text-xs leading-6 text-center mb-1 shadow-xs">
                 {getTeam(currentMatch.teamBId)?.code}
               </span>
               <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
@@ -110,7 +110,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
 
           {/* Resting teams banner */}
           <div className="mt-3 flex items-center gap-1.5 text-xs text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
-            <Coffee className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <Coffee className="w-3.5 h-3.5 text-[#f9af6f] shrink-0" />
             <span className="font-bold text-slate-900 dark:text-white">ทีมที่ได้พักช่วงนี้:</span>
             <span className="text-slate-700 dark:text-slate-300 font-medium truncate">
               {currentMatch.restingTeamIds.map(id => getTeam(id)?.name).filter(Boolean).join(', ')}
@@ -121,7 +121,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
           <div className="mt-4">
             <button
               onClick={() => onOpenScorer(currentMatch)}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold text-sm sm:text-base shadow-md shadow-orange-500/25 transition active:scale-[0.99]"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white font-bold text-sm sm:text-base shadow-md shadow-[#f7847d]/25 transition active:scale-[0.99]"
             >
               <Play className="w-4 h-4 fill-white" />
               <span>{currentMatch.status === 'live' ? 'เปิดกระดานนับแต้มต่อ' : 'ลงสนาม &amp; เริ่มนับแต้มคู่นี้'}</span>
@@ -137,7 +137,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             onClick={() => setFilter('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
               filter === 'all'
-                ? 'bg-gradient-to-r from-orange-500 to-rose-500 text-white shadow-xs'
+                ? 'bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] text-white shadow-xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -147,7 +147,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             onClick={() => setFilter('upcoming')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
               filter === 'upcoming'
-                ? 'bg-gradient-to-r from-orange-500 to-rose-500 text-white shadow-xs'
+                ? 'bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] text-white shadow-xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -157,7 +157,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             onClick={() => setFilter('finished')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
               filter === 'finished'
-                ? 'bg-gradient-to-r from-orange-500 to-rose-500 text-white shadow-xs'
+                ? 'bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] text-white shadow-xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -167,7 +167,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
 
         <button
           onClick={onGoToSetup}
-          className="text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition"
+          className="text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-[#dc5349] dark:hover:text-[#fba69f] transition"
         >
           แก้ไขสมาชิก / ตั้งค่า
         </button>
@@ -210,7 +210,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                     </span>
                   )}
                   {isFinished && (
-                    <span className="text-[10px] font-bold bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300 border border-orange-300 dark:border-orange-800 px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="text-[10px] font-bold bg-[#f7847d]/10 text-[#dc5349] dark:bg-[#f7847d]/20 dark:text-[#fba69f] border border-[#f7847d]/30 dark:border-[#f7847d]/40 px-2 py-0.5 rounded-full flex items-center gap-1">
                       <CheckCircle className="w-3 h-3" />
                       จบแล้ว
                     </span>
@@ -221,10 +221,10 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                   onClick={() => onOpenScorer(match)}
                   className={`flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-xl transition active:scale-95 ${
                     isLive
-                      ? 'bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white shadow-xs'
+                      ? 'bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white shadow-xs'
                       : isFinished
                       ? 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
-                      : 'bg-orange-50 dark:bg-orange-950/30 hover:bg-orange-100 dark:hover:bg-orange-950/50 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800'
+                      : 'bg-[#f7847d]/10 dark:bg-[#f7847d]/20 hover:bg-[#f7847d]/20 dark:hover:bg-[#f7847d]/30 text-[#dc5349] dark:text-[#fba69f] border border-[#f7847d]/30 dark:border-[#f7847d]/40'
                   }`}
                 >
                   {isFinished ? (
@@ -249,15 +249,15 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 {/* Team A */}
                 <div className={`p-2.5 rounded-xl border transition ${
                   isWinnerA
-                    ? 'bg-orange-50 border-orange-400 dark:bg-orange-950/40 dark:border-orange-500'
+                    ? 'bg-[#f7847d]/10 border-[#f7847d]/50 dark:bg-[#f7847d]/20 dark:border-[#f7847d]/40'
                     : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800'
                 }`}>
                   <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-md bg-orange-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                    <span className="w-6 h-6 rounded-md bg-gradient-to-br from-[#f7847d] to-[#ee6c63] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
                       {teamA.code}
                     </span>
                     <div className="min-w-0">
-                      <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerA ? 'text-orange-800 dark:text-orange-300' : 'text-slate-900 dark:text-white'}`}>
+                      <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerA ? 'text-[#dc5349] dark:text-[#fba69f]' : 'text-slate-900 dark:text-white'}`}>
                         {teamA.name}
                       </div>
                       <div className="text-[10px] text-slate-600 dark:text-slate-400 font-medium truncate">
@@ -271,9 +271,9 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 <div className="text-center px-2">
                   {isFinished || isLive ? (
                     <div className="font-mono font-black text-xl sm:text-3xl text-slate-900 dark:text-white tracking-wider">
-                      <span className={isWinnerA ? 'text-orange-600 dark:text-orange-400' : ''}>{match.scoreA}</span>
-                      <span className="text-slate-400 mx-1.5">-</span>
-                      <span className={isWinnerB ? 'text-rose-600 dark:text-rose-400' : ''}>{match.scoreB}</span>
+                      <span className={isWinnerA ? 'text-[#dc5349] dark:text-[#fba69f]' : ''}>{match.scoreA}</span>
+                      <span className="text-slate-400 dark:text-slate-500 mx-1.5">-</span>
+                      <span className={isWinnerB ? 'text-[#db7a28] dark:text-[#fbc693]' : ''}>{match.scoreB}</span>
                     </div>
                   ) : (
                     <div className="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md border border-slate-200 dark:border-slate-700">
@@ -285,19 +285,19 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 {/* Team B */}
                 <div className={`p-2.5 rounded-xl border transition text-right ${
                   isWinnerB
-                    ? 'bg-rose-50 border-rose-400 dark:bg-rose-950/40 dark:border-rose-500'
+                    ? 'bg-[#f9af6f]/10 border-[#f9af6f]/50 dark:bg-[#f9af6f]/20 dark:border-[#f9af6f]/40'
                     : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800'
                 }`}>
                   <div className="flex items-center justify-end gap-2">
                     <div className="min-w-0">
-                      <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerB ? 'text-rose-800 dark:text-rose-300' : 'text-slate-900 dark:text-white'}`}>
+                      <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerB ? 'text-[#db7a28] dark:text-[#fbc693]' : 'text-slate-900 dark:text-white'}`}>
                         {teamB.name}
                       </div>
                       <div className="text-[10px] text-slate-600 dark:text-slate-400 font-medium truncate">
                         {teamB.player1} / {teamB.player2}
                       </div>
                     </div>
-                    <span className="w-6 h-6 rounded-md bg-rose-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                    <span className="w-6 h-6 rounded-md bg-gradient-to-br from-[#f89875] to-[#f9af6f] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
                       {teamB.code}
                     </span>
                   </div>

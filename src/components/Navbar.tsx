@@ -35,15 +35,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-orange-500 to-rose-600 flex items-center justify-center text-xl shadow-md shadow-orange-500/25 text-white">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-b from-[#f7847d] via-[#f89875] to-[#f9af6f] flex items-center justify-center text-xl shadow-md shadow-[#f7847d]/25 text-white">
             🏸
           </div>
           <div>
             <h1 className="font-bold text-sm sm:text-base leading-tight tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
               Badminton ก๊วน
               {isCloudSynced ? (
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800 px-1.5 py-0.5 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-[#f7847d]/10 dark:bg-[#f7847d]/20 text-[#dc5349] dark:text-[#fba69f] border border-[#f7847d]/30 dark:border-[#f7847d]/40 px-1.5 py-0.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f7847d] animate-pulse"></span>
                   Live Sync
                 </span>
               ) : (
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={onRefreshClick}
               title="รีเฟรชข้อมูลล่าสุด"
               className={`p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition active:scale-95 border border-slate-200/60 dark:border-slate-700 ${
-                isRefreshing ? 'animate-spin text-orange-500' : ''
+                isRefreshing ? 'animate-spin text-[#f7847d]' : ''
               }`}
             >
               <RefreshCw className="w-4 h-4" />
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={onShareClick}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-semibold text-xs sm:text-sm shadow-md shadow-orange-500/20 transition active:scale-95"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#f7847d] via-[#f89875] to-[#f9af6f] hover:brightness-105 text-white font-semibold text-xs sm:text-sm shadow-md shadow-[#f7847d]/20 transition active:scale-95"
           >
             <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>แชร์ลิงก์</span>
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="คัดลอกลิงก์ด่วน"
             className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition border border-slate-200 dark:border-slate-700"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-orange-500" /> : null}
+            {copied ? <Check className="w-3.5 h-3.5 text-[#f7847d]" /> : null}
             <span>{copied ? 'คัดลอกแล้ว!' : 'Copy URL'}</span>
           </button>
         </div>
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('schedule')}
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'schedule'
-              ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
+              ? 'border-[#f7847d] text-[#dc5349] dark:text-[#fba69f] bg-[#f7847d]/10 dark:bg-[#f7847d]/15'
               : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('standings')}
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'standings'
-              ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
+              ? 'border-[#f7847d] text-[#dc5349] dark:text-[#fba69f] bg-[#f7847d]/10 dark:bg-[#f7847d]/15'
               : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('setup')}
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'setup'
-              ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
+              ? 'border-[#f7847d] text-[#dc5349] dark:text-[#fba69f] bg-[#f7847d]/10 dark:bg-[#f7847d]/15'
               : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
@@ -150,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('expenses')}
           className={`flex-1 min-w-[85px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'expenses'
-              ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
+              ? 'border-[#f7847d] text-[#dc5349] dark:text-[#fba69f] bg-[#f7847d]/10 dark:bg-[#f7847d]/15'
               : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
