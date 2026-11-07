@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'schedule'
               ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -127,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'standings'
               ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`flex-1 min-w-[70px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'setup'
               ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`flex-1 min-w-[85px] sm:min-w-0 flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition whitespace-nowrap ${
             activeTab === 'expenses'
               ? 'border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-50/60 dark:bg-orange-950/20'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <Wallet className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

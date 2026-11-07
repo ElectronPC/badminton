@@ -82,37 +82,37 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
           {/* Teams Confrontation Card */}
           <div className="grid grid-cols-2 gap-3 items-center py-2">
             {/* Team A */}
-            <div className="text-center sm:text-left bg-white dark:bg-slate-850 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div className="text-center sm:text-left bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
               <span className="inline-block w-6 h-6 rounded-md bg-orange-600 text-white font-black text-xs leading-6 text-center mb-1">
                 {getTeam(currentMatch.teamAId)?.code}
               </span>
               <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
                 {getTeam(currentMatch.teamAId)?.name}
               </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="text-[11px] text-slate-600 dark:text-slate-300">
                 {getTeam(currentMatch.teamAId)?.player1} &amp; {getTeam(currentMatch.teamAId)?.player2}
               </div>
             </div>
 
             {/* Team B */}
-            <div className="text-center sm:text-right bg-white dark:bg-slate-850 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div className="text-center sm:text-right bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
               <span className="inline-block w-6 h-6 rounded-md bg-rose-600 text-white font-black text-xs leading-6 text-center mb-1">
                 {getTeam(currentMatch.teamBId)?.code}
               </span>
               <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
                 {getTeam(currentMatch.teamBId)?.name}
               </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="text-[11px] text-slate-600 dark:text-slate-300">
                 {getTeam(currentMatch.teamBId)?.player1} &amp; {getTeam(currentMatch.teamBId)?.player2}
               </div>
             </div>
           </div>
 
           {/* Resting teams banner */}
-          <div className="mt-3 flex items-center gap-1.5 text-xs text-slate-700 dark:text-slate-300 bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+          <div className="mt-3 flex items-center gap-1.5 text-xs text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
             <Coffee className="w-3.5 h-3.5 text-amber-500 shrink-0" />
             <span className="font-bold text-slate-900 dark:text-white">ทีมที่ได้พักช่วงนี้:</span>
-            <span className="text-slate-600 dark:text-slate-400 truncate">
+            <span className="text-slate-700 dark:text-slate-300 font-medium truncate">
               {currentMatch.restingTeamIds.map(id => getTeam(id)?.name).filter(Boolean).join(', ')}
             </span>
           </div>
@@ -260,7 +260,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerA ? 'text-orange-800 dark:text-orange-300' : 'text-slate-900 dark:text-white'}`}>
                         {teamA.name}
                       </div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                      <div className="text-[10px] text-slate-600 dark:text-slate-400 font-medium truncate">
                         {teamA.player1} / {teamA.player2}
                       </div>
                     </div>
@@ -293,7 +293,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       <div className={`font-bold text-xs sm:text-sm truncate ${isWinnerB ? 'text-rose-800 dark:text-rose-300' : 'text-slate-900 dark:text-white'}`}>
                         {teamB.name}
                       </div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                      <div className="text-[10px] text-slate-600 dark:text-slate-400 font-medium truncate">
                         {teamB.player1} / {teamB.player2}
                       </div>
                     </div>
@@ -305,10 +305,10 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
               </div>
 
               {/* Resting Teams Footer */}
-              <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300">
                 <Coffee className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                <span className="font-semibold text-slate-700 dark:text-slate-300 shrink-0">ทีมที่พัก:</span>
-                <span className="text-slate-600 dark:text-slate-400 truncate">{restingNames}</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200 shrink-0">ทีมที่พัก:</span>
+                <span className="text-slate-600 dark:text-slate-400 font-medium truncate">{restingNames}</span>
               </div>
             </div>
           );

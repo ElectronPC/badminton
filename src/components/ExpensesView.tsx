@@ -265,7 +265,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 placeholder="ระบุชื่อผู้ใช้"
                 value={usernameInput}
                 onChange={(e) => setUsernameInput(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
                 required
               />
             </div>
@@ -279,7 +279,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 placeholder="ระบุรหัสผ่าน"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
                 required
               />
             </div>
@@ -460,7 +460,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               <button
                 type="button"
                 onClick={handleResetPaid}
-                className="text-slate-500 hover:underline"
+                className="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:underline"
               >
                 ล้างทั้งหมด
               </button>
@@ -563,7 +563,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 setCourtFee(val);
                 saveState(paidPlayerIds, val, shuttlecockFee);
               }}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -580,7 +580,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
                 setShuttlecockFee(val);
                 saveState(paidPlayerIds, courtFee, val);
               }}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -593,7 +593,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               placeholder="เช่น 0812345678"
               value={promptPayNumber}
               onChange={(e) => setPromptPayNumber(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -606,7 +606,7 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({
               placeholder="เช่น นัส"
               value={promptPayName}
               onChange={(e) => setPromptPayName(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
         </div>

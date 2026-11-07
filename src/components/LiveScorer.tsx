@@ -132,7 +132,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           <button
             onClick={handleResetScore}
             title="รีเซ็ตแต้ม"
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-amber-600 transition"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 transition"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -180,7 +180,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
             >
               {leftScore}
             </div>
-            <div className="text-[11px] text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
           </div>
 
           {/* Score Adjustment Buttons */}
@@ -245,7 +245,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
             >
               {rightScore}
             </div>
-            <div className="text-[11px] text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
           </div>
 
           {/* Score Adjustment Buttons */}

@@ -105,7 +105,7 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                           <div className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">
                             {stat.team.name}
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                          <div className="text-[11px] text-slate-600 dark:text-slate-300 font-medium">
                             {stat.team.player1} &amp; {stat.team.player2}
                           </div>
                         </div>
@@ -145,7 +145,7 @@ export const StandingsView: React.FC<StandingsViewProps> = ({ session }) => {
                             ? 'text-orange-600 dark:text-orange-400'
                             : stat.pointDiff < 0
                             ? 'text-rose-600 dark:text-rose-400'
-                            : 'text-slate-500'
+                            : 'text-slate-500 dark:text-slate-400'
                         }
                       >
                         {stat.pointDiff > 0 ? `+${stat.pointDiff}` : stat.pointDiff}

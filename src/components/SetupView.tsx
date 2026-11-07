@@ -149,7 +149,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
               placeholder="เช่น ต้น"
               value={player1}
               onChange={(e) => setPlayer1(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
           <div>
@@ -159,7 +159,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
               placeholder="เช่น บาส"
               value={player2}
               onChange={(e) => setPlayer2(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
         </div>
@@ -235,7 +235,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
