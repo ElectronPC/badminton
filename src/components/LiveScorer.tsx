@@ -33,8 +33,8 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
     if (isMatchWon) {
       playWinSound();
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 120,
+        spread: 80,
         origin: { y: 0.6 },
       });
     }
@@ -96,21 +96,21 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
   const rightRole = swappedSides ? 'A' : 'B';
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950 flex flex-col justify-between overflow-hidden select-none">
+    <div className="fixed inset-0 z-50 bg-slate-100 flex flex-col justify-between overflow-hidden select-none">
       {/* Top Bar */}
-      <div className="bg-slate-900/90 border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+      <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-xs">
         <div className="flex items-center gap-2">
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+            className="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
           >
             <X className="w-5 h-5" />
           </button>
           <div>
-            <div className="text-xs font-semibold text-emerald-400">
+            <div className="text-xs font-bold text-emerald-800">
               แมตช์ที่ {match.matchNumber} จาก {session.matches.length}
             </div>
-            <div className="text-[11px] text-slate-400">
+            <div className="text-[11px] text-slate-500 font-medium">
               แข่งจบที่ {target} แต้ม (คอร์ต 1)
             </div>
           </div>
@@ -120,7 +120,7 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           <button
             onClick={() => setSwappedSides(!swappedSides)}
             title="สลับฝั่งคอร์ต"
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition active:scale-95"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold border border-slate-200 transition active:scale-95"
           >
             <ArrowLeftRight className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">สลับแดน</span>
@@ -129,34 +129,34 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           <button
             onClick={handleResetScore}
             title="รีเซ็ตแต้ม"
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-amber-400 transition"
+            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-amber-600 transition"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Main Scoreboard Arena */}
-      <div className="flex-1 grid grid-cols-2 divide-x divide-slate-800 max-w-4xl mx-auto w-full p-2 sm:p-4 gap-2 sm:gap-4 items-stretch">
+      {/* Main Scoreboard Arena - High Contrast White Cards */}
+      <div className="flex-1 grid grid-cols-2 divide-x divide-slate-200 max-w-4xl mx-auto w-full p-2 sm:p-4 gap-2 sm:gap-4 items-stretch">
         {/* Left Team Box */}
-        <div className="flex flex-col justify-between p-3 sm:p-5 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/60 border border-slate-800 relative">
+        <div className="flex flex-col justify-between p-3 sm:p-5 rounded-3xl bg-white border-2 border-emerald-500/50 shadow-md relative">
           {/* Server Indicator */}
           {server === leftRole && (
-            <div className="absolute top-3 left-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <div className="absolute top-3 left-3 bg-emerald-100 text-emerald-800 border border-emerald-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
               เสิร์ฟ
             </div>
           )}
 
           {/* Team Info */}
           <div className="text-center mt-6">
-            <span className="inline-block w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold text-sm border border-emerald-500/20 leading-8 mb-1">
+            <span className="inline-block w-8 h-8 rounded-xl bg-emerald-600 text-white font-black text-sm leading-8 mb-1 shadow-xs">
               {leftTeam.code}
             </span>
-            <h3 className="text-base sm:text-2xl font-bold text-white tracking-tight line-clamp-1">
+            <h3 className="text-base sm:text-2xl font-black text-slate-900 tracking-tight line-clamp-1">
               {leftTeam.name}
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs font-medium text-slate-500 mt-0.5">
               {leftTeam.player1} &amp; {leftTeam.player2}
             </p>
           </div>
@@ -165,11 +165,11 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           <div className="my-auto text-center py-4">
             <div
               onClick={() => handlePoint(leftRole, 1)}
-              className="text-7xl sm:text-9xl font-black tracking-tighter text-white font-mono cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+              className="text-8xl sm:text-9xl font-black tracking-tighter text-slate-950 font-mono cursor-pointer hover:scale-105 active:scale-95 transition-transform"
             >
               {leftScore}
             </div>
-            <div className="text-[11px] text-slate-500 mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
+            <div className="text-[11px] text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
           </div>
 
           {/* Score Adjustment Buttons */}
@@ -177,39 +177,39 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
             <button
               onClick={() => handlePoint(leftRole, -1)}
               disabled={leftScore === 0}
-              className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-slate-800 text-slate-300 font-bold flex items-center justify-center transition active:scale-90"
+              className="w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-slate-100 hover:bg-slate-200 disabled:opacity-30 text-slate-700 font-black flex items-center justify-center transition active:scale-90 border border-slate-200"
             >
-              <Minus className="w-5 h-5" />
+              <Minus className="w-6 h-6 stroke-[3]" />
             </button>
             <button
               onClick={() => handlePoint(leftRole, 1)}
-              className="flex-1 h-12 sm:h-14 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg sm:text-xl flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-600/30 transition active:scale-95"
+              className="flex-1 h-12 sm:h-16 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl sm:text-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition active:scale-95"
             >
-              <Plus className="w-6 h-6" />
+              <Plus className="w-7 h-7 stroke-[3]" />
               <span>+1 แต้ม</span>
             </button>
           </div>
         </div>
 
         {/* Right Team Box */}
-        <div className="flex flex-col justify-between p-3 sm:p-5 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/60 border border-slate-800 relative">
+        <div className="flex flex-col justify-between p-3 sm:p-5 rounded-3xl bg-white border-2 border-teal-500/50 shadow-md relative">
           {/* Server Indicator */}
           {server === rightRole && (
-            <div className="absolute top-3 left-3 bg-teal-500/20 text-teal-400 border border-teal-500/30 text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-ping"></span>
+            <div className="absolute top-3 left-3 bg-teal-100 text-teal-800 border border-teal-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-teal-600 animate-ping"></span>
               เสิร์ฟ
             </div>
           )}
 
           {/* Team Info */}
           <div className="text-center mt-6">
-            <span className="inline-block w-8 h-8 rounded-xl bg-teal-500/10 text-teal-400 font-bold text-sm border border-teal-500/20 leading-8 mb-1">
+            <span className="inline-block w-8 h-8 rounded-xl bg-teal-600 text-white font-black text-sm leading-8 mb-1 shadow-xs">
               {rightTeam.code}
             </span>
-            <h3 className="text-base sm:text-2xl font-bold text-white tracking-tight line-clamp-1">
+            <h3 className="text-base sm:text-2xl font-black text-slate-900 tracking-tight line-clamp-1">
               {rightTeam.name}
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs font-medium text-slate-500 mt-0.5">
               {rightTeam.player1} &amp; {rightTeam.player2}
             </p>
           </div>
@@ -218,11 +218,11 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
           <div className="my-auto text-center py-4">
             <div
               onClick={() => handlePoint(rightRole, 1)}
-              className="text-7xl sm:text-9xl font-black tracking-tighter text-white font-mono cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+              className="text-8xl sm:text-9xl font-black tracking-tighter text-slate-950 font-mono cursor-pointer hover:scale-105 active:scale-95 transition-transform"
             >
               {rightScore}
             </div>
-            <div className="text-[11px] text-slate-500 mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
+            <div className="text-[11px] text-slate-400 font-medium mt-1">แตะที่ตัวเลขหรือปุ่ม +1 ด้านล่าง</div>
           </div>
 
           {/* Score Adjustment Buttons */}
@@ -230,25 +230,25 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
             <button
               onClick={() => handlePoint(rightRole, -1)}
               disabled={rightScore === 0}
-              className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-slate-800 text-slate-300 font-bold flex items-center justify-center transition active:scale-90"
+              className="w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-slate-100 hover:bg-slate-200 disabled:opacity-30 text-slate-700 font-black flex items-center justify-center transition active:scale-90 border border-slate-200"
             >
-              <Minus className="w-5 h-5" />
+              <Minus className="w-6 h-6 stroke-[3]" />
             </button>
             <button
               onClick={() => handlePoint(rightRole, 1)}
-              className="flex-1 h-12 sm:h-14 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-lg sm:text-xl flex items-center justify-center gap-1.5 shadow-lg shadow-teal-600/30 transition active:scale-95"
+              className="flex-1 h-12 sm:h-16 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xl sm:text-2xl flex items-center justify-center gap-2 shadow-lg shadow-teal-600/30 transition active:scale-95"
             >
-              <Plus className="w-6 h-6" />
+              <Plus className="w-7 h-7 stroke-[3]" />
               <span>+1 แต้ม</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Match Win or Completion Banner */}
+      {/* Match Win Banner */}
       {isMatchWon && (
-        <div className="bg-emerald-500 text-slate-950 font-bold text-center py-2 px-4 animate-bounce flex items-center justify-center gap-2 text-sm sm:text-base">
-          <Trophy className="w-5 h-5 fill-slate-950" />
+        <div className="bg-emerald-600 text-white font-black text-center py-2.5 px-4 animate-bounce flex items-center justify-center gap-2 text-base shadow-lg">
+          <Trophy className="w-5 h-5 fill-white" />
           <span>
             {currentLeader === 'A' ? teamA.name : teamB.name} ชนะเกมนี้! ({scoreA} - {scoreB})
           </span>
@@ -256,17 +256,17 @@ export const LiveScorer: React.FC<LiveScorerProps> = ({
       )}
 
       {/* Bottom Action Footer */}
-      <div className="bg-slate-900 border-t border-slate-800 p-3 sm:p-4 max-w-4xl mx-auto w-full flex items-center justify-between gap-3">
+      <div className="bg-white border-t border-slate-200 p-3 sm:p-4 max-w-4xl mx-auto w-full flex items-center justify-between gap-3 shadow-md">
         <button
           onClick={onClose}
-          className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-semibold transition"
+          className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold border border-slate-200 transition"
         >
-          กลับไปดูตาราง (นับต่อทีหลังได้)
+          กลับไปดูตาราง
         </button>
 
         <button
           onClick={handleFinishMatch}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/30 transition active:scale-[0.98]"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition active:scale-[0.98]"
         >
           <CheckCircle2 className="w-5 h-5" />
           <span>บันทึกผลการแข่งขัน &amp; จบเกม</span>

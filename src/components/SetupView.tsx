@@ -88,6 +88,13 @@ export const SetupView: React.FC<SetupViewProps> = ({
       teams,
       matches,
       activeMatchId: null,
+      expenses: session?.expenses || {
+        courtFee: 600,
+        shuttlecockFee: 0,
+        promptPayNumber: '',
+        promptPayName: '',
+        paidPlayerIds: [],
+      },
       lastUpdated: Date.now(),
     };
 
@@ -100,59 +107,59 @@ export const SetupView: React.FC<SetupViewProps> = ({
   const matchesPerTeam = teams.length - 1;
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-5 pb-12">
       {/* Intro Card */}
-      <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-lg">
-        <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white rounded-2xl p-5 shadow-lg">
+        <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
           <span>👥 สมาชิกและทีมที่มาเล่นวันนี้</span>
         </h2>
-        <p className="text-sm text-slate-300 mt-1">
+        <p className="text-xs text-emerald-100 mt-1">
           ระบบจะจัดตารางแบบพบกันหมด (Round-Robin) ให้ทุกคนได้เล่นเท่ากันเป๊ะ และไม่มีใครต้องแข่งติดกัน
         </p>
 
         {/* Quick summary stat */}
         <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
-          <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-3 text-center">
-            <div className="text-xl sm:text-2xl font-bold text-emerald-400">{teams.length}</div>
-            <div className="text-[11px] sm:text-xs text-slate-400">ทีมทั้งหมด</div>
+          <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black">{teams.length}</div>
+            <div className="text-[11px] text-emerald-100">ทีมทั้งหมด</div>
           </div>
-          <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-3 text-center">
-            <div className="text-xl sm:text-2xl font-bold text-teal-400">{totalMatches}</div>
-            <div className="text-[11px] sm:text-xs text-slate-400">จำนวนแมตช์</div>
+          <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black">{totalMatches}</div>
+            <div className="text-[11px] text-emerald-100">จำนวนแมตช์</div>
           </div>
-          <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-3 text-center">
-            <div className="text-xl sm:text-2xl font-bold text-cyan-400">{matchesPerTeam}</div>
-            <div className="text-[11px] sm:text-xs text-slate-400">แมตช์/ทีม</div>
+          <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black">{matchesPerTeam}</div>
+            <div className="text-[11px] text-emerald-100">แมตช์/ทีม</div>
           </div>
         </div>
       </div>
 
       {/* Add New Team Form */}
-      <form onSubmit={handleAddTeam} className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base text-slate-200 mb-3 flex items-center gap-2">
-          <Plus className="w-4 h-4 text-emerald-400" />
+      <form onSubmit={handleAddTeam} className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm">
+        <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-3 flex items-center gap-2">
+          <Plus className="w-4 h-4 text-emerald-600" />
           <span>เพิ่มคู่ผู้เล่นใหม่</span>
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs text-slate-400 mb-1">ผู้เล่นคนที่ 1</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">ผู้เล่นคนที่ 1</label>
             <input
               type="text"
               placeholder="เช่น ต้น"
               value={player1}
               onChange={(e) => setPlayer1(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition"
             />
           </div>
           <div>
-            <label className="block text-xs text-slate-400 mb-1">ผู้เล่นคนที่ 2</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">ผู้เล่นคนที่ 2</label>
             <input
               type="text"
               placeholder="เช่น บาส"
               value={player2}
               onChange={(e) => setPlayer2(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition"
             />
           </div>
         </div>
@@ -161,7 +168,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
           <button
             type="submit"
             disabled={!player1.trim() || !player2.trim()}
-            className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md shadow-emerald-600/20 transition active:scale-95"
+            className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md shadow-emerald-600/20 transition active:scale-95"
           >
             <Plus className="w-4 h-4" />
             <span>เพิ่มคู่นี้เข้าก๊วน</span>
@@ -170,15 +177,15 @@ export const SetupView: React.FC<SetupViewProps> = ({
       </form>
 
       {/* Current Teams List */}
-      <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 sm:p-5">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="font-semibold text-sm sm:text-base text-slate-200">
+          <h3 className="font-bold text-sm sm:text-base text-slate-900">
             รายชื่อทีมที่เข้าร่วม ({teams.length} ทีม)
           </h3>
           <button
             type="button"
             onClick={handleResetDefault}
-            className="text-xs text-slate-400 hover:text-emerald-400 flex items-center gap-1 transition"
+            className="text-xs font-semibold text-slate-500 hover:text-emerald-700 flex items-center gap-1 transition"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>โหลด 6 ทีมเริ่มต้น</span>
@@ -189,15 +196,15 @@ export const SetupView: React.FC<SetupViewProps> = ({
           {teams.map((team) => (
             <div
               key={team.id}
-              className="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 border border-slate-700/60 hover:border-slate-600 transition"
+              className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition"
             >
               <div className="flex items-center gap-3">
-                <span className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold text-xs flex items-center justify-center border border-emerald-500/20">
+                <span className="w-7 h-7 rounded-lg bg-emerald-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
                   {team.code}
                 </span>
                 <div>
-                  <div className="font-semibold text-sm text-white">{team.name}</div>
-                  <div className="text-xs text-slate-400">
+                  <div className="font-bold text-sm text-slate-900">{team.name}</div>
+                  <div className="text-xs text-slate-500">
                     {team.player1} &amp; {team.player2}
                   </div>
                 </div>
@@ -206,7 +213,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
               <button
                 onClick={() => handleRemoveTeam(team.id)}
                 title="ลบทีมนี้"
-                className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
@@ -216,34 +223,34 @@ export const SetupView: React.FC<SetupViewProps> = ({
       </div>
 
       {/* Match Configuration */}
-      <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base text-slate-200 mb-3">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm">
+        <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-3">
           ⚙️ การตั้งค่าการแข่งขัน
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs text-slate-400 mb-1">ชื่อก๊วน / วันที่</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">ชื่อก๊วน / วันที่</label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs text-slate-400 mb-1">แต้มจบเกม (ต่อแมตช์)</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">แต้มจบเกม (ต่อแมตช์)</label>
             <div className="flex items-center gap-2">
               {[15, 21, 30].map((pts) => (
                 <button
                   key={pts}
                   type="button"
                   onClick={() => setTargetPoints(pts)}
-                  className={`flex-1 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition ${
+                  className={`flex-1 py-2 rounded-xl text-xs sm:text-sm font-bold border transition ${
                     targetPoints === pts
-                      ? 'bg-emerald-600 border-emerald-500 text-white shadow-md shadow-emerald-600/20'
-                      : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-slate-200'
+                      ? 'bg-emerald-600 border-emerald-600 text-white shadow-xs'
+                      : 'bg-slate-50 border-slate-300 text-slate-700 hover:bg-slate-100'
                   }`}
                 >
                   {pts} แต้ม
@@ -265,9 +272,9 @@ export const SetupView: React.FC<SetupViewProps> = ({
               handleCreateTournament();
             }
           }}
-          className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-base shadow-xl shadow-emerald-500/25 transition transform active:scale-[0.99]"
+          className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-base shadow-lg shadow-emerald-600/30 transition transform active:scale-[0.99]"
         >
-          <Play className="w-5 h-5 fill-slate-950" />
+          <Play className="w-5 h-5 fill-white" />
           <span>สร้างตารางแข่งขัน &amp; เริ่มเล่น ({totalMatches} แมตช์)</span>
         </button>
 
@@ -275,7 +282,7 @@ export const SetupView: React.FC<SetupViewProps> = ({
           <div className="text-center mt-3">
             <button
               onClick={onGoToSchedule}
-              className="text-xs text-emerald-400 hover:underline"
+              className="text-xs font-bold text-emerald-700 hover:underline"
             >
               หรือกลับไปดูตารางแข่งปัจจุบันที่กำลังดำเนินอยู่ ➔
             </button>
@@ -285,25 +292,25 @@ export const SetupView: React.FC<SetupViewProps> = ({
 
       {/* Confirm modal if resetting ongoing tournament */}
       {confirmModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-5 max-w-sm w-full shadow-2xl">
-            <div className="flex items-center gap-3 text-amber-400 mb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 max-w-sm w-full shadow-2xl">
+            <div className="flex items-center gap-3 text-amber-600 mb-3">
               <AlertCircle className="w-6 h-6 shrink-0" />
-              <h4 className="font-bold text-white text-base">สร้างตารางใหม่?</h4>
+              <h4 className="font-bold text-slate-900 text-base">สร้างตารางใหม่?</h4>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               การสร้างตารางใหม่จะรีเซ็ตแต้มและผลการแข่งขันเดิมทั้งหมด คุณแน่ใจหรือไม่ว่าต้องการเริ่มใหม่?
             </p>
             <div className="mt-5 flex items-center justify-end gap-2">
               <button
                 onClick={() => setConfirmModalOpen(false)}
-                className="px-3.5 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs font-semibold"
+                className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"
               >
                 ยกเลิก
               </button>
               <button
                 onClick={handleCreateTournament}
-                className="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold shadow-md shadow-red-600/30"
+                className="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md shadow-red-600/20"
               >
                 ยืนยันเริ่มใหม่
               </button>
