@@ -278,6 +278,7 @@ export function App() {
               <ExpensesView
                 session={session}
                 onSaveExpenses={handleSaveExpenses}
+                onGoToSchedule={() => setActiveTab('schedule')}
               />
             )}
           </>

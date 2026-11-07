@@ -156,6 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <Wallet className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>ค่าคอร์ท / หารเงิน</span>
+          <span className="text-[10px] opacity-75">🔒</span>
         </button>
       </div>
     </header>

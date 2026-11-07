@@ -13,11 +13,17 @@ import {
   CreditCard,
   Sparkles,
   Settings,
+  Lock,
+  LogOut,
+  ShieldCheck,
+  AlertCircle,
+  ArrowLeft,
 } from 'lucide-react';
 
 interface ExpensesViewProps {
   session: TournamentSession;
   onSaveExpenses: (expenses: ExpenseInfo) => void;
+  onGoToSchedule: () => void;
 }
 
 interface PlayerItem {
@@ -27,7 +33,23 @@ interface PlayerItem {
   teamName: string;
 }
 
-export const ExpensesView: React.FC<ExpensesViewProps> = ({ session, onSaveExpenses }) => {
+export const ExpensesView: React.FC<ExpensesViewProps> = ({
+  session,
+  onSaveExpenses,
+  onGoToSchedule,
+}) => {
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('badminton_expenses_auth') === 'true';
+    }
+    return false;
+  });
+
+  const [usernameInput, setUsernameInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [loginError, setLoginError] = useState('');
+
   const currentExpenses = session.expenses || {
     courtFee: 600,
     shuttlecockFee: 0,
@@ -53,6 +75,30 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({ session, onSaveExpen
   const [copiedPromptPay, setCopiedPromptPay] = useState(false);
   const [copiedSummary, setCopiedSummary] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
+
+  // Handle Login
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (usernameInput.trim() === 'Electron' && passwordInput === 'Electron_11') {
+      setIsAuthenticated(true);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('badminton_expenses_auth', 'true');
+      }
+      setLoginError('');
+      setUsernameInput('');
+      setPasswordInput('');
+    } else {
+      setLoginError('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง');
+    }
+  };
+
+  // Handle Logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('badminton_expenses_auth');
+    }
+  };
 
   // Extract all individual players from session.teams
   const allPlayers: PlayerItem[] = useMemo(() => {
@@ -178,8 +224,111 @@ export const ExpensesView: React.FC<ExpensesViewProps> = ({ session, onSaveExpen
     ? `https://promptpay.io/${cleanPromptPay}/${perPerson}.png`
     : null;
 
+  // ==========================================
+  // 🔒 LOGIN GATE IF NOT AUTHENTICATED
+  // ==========================================
+  if (!isAuthenticated) {
+    return (
+      <div className="max-w-md mx-auto my-8 sm:my-14 space-y-6">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl text-center space-y-5 transition-colors">
+          {/* Lock Icon */}
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-orange-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/30">
+            <Lock className="w-8 h-8" />
+          </div>
+
+          <div>
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+              เข้าสู่ระบบจัดการค่าใช้จ่าย
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              หน้านี้สงวนสิทธิ์เฉพาะผู้ดูแลก๊วน (Admin) เท่านั้น<br />
+              สมาชิกทั่วไปสามารถเข้าใช้งานได้ 3 ส่วนแรก
+            </p>
+          </div>
+
+          {/* Error Message */}
+          {loginError && (
+            <div className="p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-600 dark:text-red-400 flex items-center gap-2 text-left">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          {/* Form */}
+          <form onSubmit={handleLogin} className="space-y-3.5 text-left">
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                ชื่อผู้ใช้ (Username)
+              </label>
+              <input
+                type="text"
+                placeholder="ระบุชื่อผู้ใช้"
+                value={usernameInput}
+                onChange={(e) => setUsernameInput(e.target.value)}
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                รหัสผ่าน (Password)
+              </label>
+              <input
+                type="password"
+                placeholder="ระบุรหัสผ่าน"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 transition"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold text-sm shadow-lg shadow-orange-500/25 transition active:scale-[0.99] mt-2"
+            >
+              เข้าสู่ระบบ
+            </button>
+          </form>
+
+          {/* Back Button */}
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button
+              type="button"
+              onClick={onGoToSchedule}
+              className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 flex items-center justify-center gap-1.5 mx-auto transition"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>กลับไปดูตารางแข่งขัน</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ==========================================
+  // 🔓 AUTHENTICATED EXPENSES VIEW
+  // ==========================================
   return (
     <div className="space-y-5 pb-12">
+      {/* Admin Status Bar */}
+      <div className="flex items-center justify-between px-3 py-2 bg-orange-50 dark:bg-orange-950/30 border border-orange-200/80 dark:border-orange-800/80 rounded-xl text-xs">
+        <div className="flex items-center gap-1.5 font-semibold text-orange-800 dark:text-orange-300">
+          <ShieldCheck className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+          <span>เข้าสู่ระบบในชื่อ: <b>Electron</b> (ผู้ดูแลระบบ)</span>
+        </div>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 font-medium transition"
+        >
+          <LogOut className="w-3.5 h-3.5" />
+          <span>ออกจากระบบ</span>
+        </button>
+      </div>
+
       {/* Top Banner - Sunset Orange / Red Theme */}
       <div className="bg-gradient-to-r from-orange-500 via-amber-600 to-rose-600 text-white rounded-2xl p-5 shadow-lg">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
